@@ -1,5 +1,6 @@
 package com.example.timeplication.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.timeplication.R;
+import com.example.timeplication.UserMainActivity;
 import com.example.timeplication.entry.EntryFragment;
 
 
@@ -49,6 +51,8 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (isAdmin) {
+                    Intent i = new Intent(getContext(), UserMainActivity.class);
+                    startActivity(i);
                     Fragment fm = new EntryFragment();
                     transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.fragment_container, fm);
