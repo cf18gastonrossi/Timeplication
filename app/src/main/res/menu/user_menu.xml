@@ -8,5 +8,9 @@
             android:id="@+id/nav_sign"
             android:icon="@drawable/ic_launcher_foreground"
             android:title="Entry" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="History" />
     </group>
 </menu>

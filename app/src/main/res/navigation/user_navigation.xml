@@ -10,4 +10,10 @@
         android:name="com.example.timeplication.entry.EntryFragment"
         android:label="Sign"
         tools:layout="@layout/entry_fragment"/>
+
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.example.timeplication.history.HistoryFragment"
+        android:label="History"
+        tools:layout="@layout/history_fragment"/>
 </navigation>

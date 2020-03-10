@@ -22,7 +22,7 @@ public class UserMainActivity extends AppCompatActivity {
         setContentView(R.layout.user_activity_main);
         DrawerLayout drawer = findViewById(R.id.user_drawer_layout);
         NavigationView navigationView = findViewById(R.id.user_nav_view);
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.user_nav_view)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.user_nav_view, R.id.nav_history)
                 .setDrawerLayout(drawer).build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_user_fragment);
