@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.timeplication.AdminMainActivity;
 import com.example.timeplication.R;
 import com.example.timeplication.UserMainActivity;
 import com.example.timeplication.entry.EntryFragment;
@@ -51,17 +52,11 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (isAdmin) {
-                    Fragment fm = new EntryFragment();
-                    transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.fragment_container, fm);
-                    transaction.addToBackStack(null).commit();
+                    Intent i = new Intent(getContext(), AdminMainActivity.class);
+                    startActivity(i);
                 } else {
                     Intent i = new Intent(getContext(), UserMainActivity.class);
                     startActivity(i);
-                    Fragment fm = new EntryFragment();
-                    transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.fragment_container, fm);
-                    transaction.addToBackStack(null).commit();
                 }
             }
         });
