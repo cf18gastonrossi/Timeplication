@@ -9,12 +9,12 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.timeplication.R;
-import com.example.timeplication.databinding.LoginFragmentBinding;
+
 
 public class LoginFragment extends Fragment {
 
@@ -31,19 +31,12 @@ public class LoginFragment extends Fragment {
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState
     ) {
-        LoginFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false);
-        binding.setLifecycleOwner(this);
-        binding.setViewModel(viewModel);
-        return binding.getRoot();
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        userNameText = view.findViewById(R.id.user_edit_text);
-        passwordText = view.findViewById(R.id.password_edit_text);
-        loginButton = view.findViewById(R.id.login_button);
+        viewModel =
+                ViewModelProviders.of(this).get(LoginViewmodel.class);
+        View root = inflater.inflate(R.layout.login_fragment, container, false);
+        loginButton = root.findViewById(R.id.login_button);
         setListener();
+        return root;
     }
 
     private void setListener() {
