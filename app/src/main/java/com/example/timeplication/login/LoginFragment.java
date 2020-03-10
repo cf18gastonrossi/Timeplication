@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.timeplication.R;
+import com.example.timeplication.entry.EntryFragment;
 
 
 public class LoginFragment extends Fragment {
@@ -44,7 +45,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Fragment fm = new LoginFragment();
+                Fragment fm = new EntryFragment();
                 transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container, fm);
                 transaction.addToBackStack(null).commit();
