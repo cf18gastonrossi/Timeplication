@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,7 +24,9 @@ public class LoginFragment extends Fragment {
     private EditText userNameText;
     private EditText passwordText;
     private Button loginButton;
+    private TextView adminTextView;
     private FragmentTransaction transaction;
+    private boolean isAdmin = false;
 
     @Nullable
     @Override
@@ -36,6 +39,7 @@ public class LoginFragment extends Fragment {
                 ViewModelProviders.of(this).get(LoginViewmodel.class);
         View root = inflater.inflate(R.layout.login_fragment, container, false);
         loginButton = root.findViewById(R.id.login_button);
+        adminTextView = root.findViewById(R.id.text_view_admin);
         setListener();
         return root;
     }
@@ -44,11 +48,30 @@ public class LoginFragment extends Fragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (isAdmin) {
+                    Fragment fm = new EntryFragment();
+                    transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment_container, fm);
+                    transaction.addToBackStack(null).commit();
+                } else {
+                    Fragment fm = new EntryFragment();
+                    transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment_container, fm);
+                    transaction.addToBackStack(null).commit();
+                }
+            }
+        });
 
-                Fragment fm = new EntryFragment();
-                transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, fm);
-                transaction.addToBackStack(null).commit();
+        adminTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isAdmin) {
+                    isAdmin = false;
+                    adminTextView.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                } else {
+                    isAdmin = true;
+                    adminTextView.setTextColor(getResources().getColor(R.color.colorPrimary));
+                }
             }
         });
     }
